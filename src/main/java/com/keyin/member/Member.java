@@ -1,10 +1,13 @@
 package com.keyin.member;
 
+import com.keyin.tournament.Tournament;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.Set;
 
 @Entity
+@Table(name = "members")
 public class Member {
 
     @Id
@@ -17,6 +20,9 @@ public class Member {
     private String phoneNum;
     private Date memberSin;
     private int duration;
+
+    @ManyToMany(mappedBy = "members")
+    private Set<Tournament> tournaments;
 
     public Long getMemberId() {
         return memberId;
