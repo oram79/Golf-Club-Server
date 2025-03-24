@@ -3,27 +3,39 @@ package com.keyin.member;
 import com.keyin.tournament.Tournament;
 import jakarta.persistence.*;
 
-import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Member {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long memberId;
 
-    private String name;
+    private String memberName;
     private String address;
     private String email;
-    private String phoneNum;
-    private Date memberSin;
-    private int duration;
+    private String phoneNumber;
+    private String membershipType;
+    private String membershipStartDate;
+    private String membershipDuration;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
-    private Tournament TournamentId;
+    @ManyToMany
+    private List <Tournament> tournaments;
 
-    public Member() {
+    public Member () {
 
+    }
+
+    public Member(Long memberId, String memberName, String address, String email, String phoneNumber, String membershipType, String membershipStartDate, String membershipDuration, List <Tournament> tournaments) {
+        this.memberId = memberId;
+        this.memberName = memberName;
+        this.address = address;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.membershipType = membershipType;
+        this.membershipStartDate = membershipStartDate;
+        this.membershipDuration = membershipDuration;
+        this.tournaments = tournaments;
     }
 
     public Long getMemberId() {
@@ -34,12 +46,12 @@ public class Member {
         this.memberId = memberId;
     }
 
-    public String getName() {
-        return name;
+    public String getMemberName() {
+        return memberName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setMemberName(String memberName) {
+        this.memberName = memberName;
     }
 
     public String getAddress() {
@@ -58,38 +70,43 @@ public class Member {
         this.email = email;
     }
 
-    public String getPhoneNum() {
-        return phoneNum;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setPhoneNum(String phoneNum) {
-        this.phoneNum = phoneNum;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
-    public Date memberSin() {
-        return memberSin;
+    public String getMembershipType() {
+        return membershipType;
     }
 
-    public void setMemberSin(Date memberSin) {
-        this.memberSin = memberSin;
+    public void setMembershipType(String membershipType) {
+        this.membershipType = membershipType;
     }
 
-    public int getDuration() {
-        return duration;
+    public String getMembershipStartDate() {
+        return membershipStartDate;
     }
 
-    public void setDuration(int duration) {
-        this.duration = duration;
+    public void setMembershipStartDate(String membershipStartDate) {
+        this.membershipStartDate = membershipStartDate;
     }
 
+    public String getMembershipDuration() {
+        return membershipDuration;
+    }
 
-    public String toString() {
-        return "Member: " + name +
-                ", ID:" + memberId +
-                ", Phone: " + phoneNum +
-                ", Email: " + email +
-                ", Address: " + address +
-                ", Member Since: " + memberSin +
-                ", Membership: " + duration;
+    public void setMembershipDuration(String membershipDuration) {
+        this.membershipDuration = membershipDuration;
+    }
+
+    public List<Tournament> getTournaments() {
+        return tournaments;
+    }
+
+    public void setTournaments(List<Tournament> tournaments) {
+        this.tournaments = tournaments;
     }
 }
