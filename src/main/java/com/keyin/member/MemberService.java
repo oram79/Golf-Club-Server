@@ -1,8 +1,10 @@
 package com.keyin.member;
 
+import com.keyin.tournament.TournamentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -10,6 +12,9 @@ public class MemberService {
 
     @Autowired
     private MemberRepository memberRepository;
+
+    @Autowired
+    private TournamentRepository tournamentRepository;
 
     public Member addMember(Member member) {
         return memberRepository.save(member);
@@ -19,16 +24,37 @@ public class MemberService {
         return memberRepository.findAll();
     }
 
-    public Optional<Member> findByName(Long name) {
-        return memberRepository.findByName(name);
+    public Optional<Member> getMemberById(Long memberId) {
+        return memberRepository.findById(memberId);
     }
 
-    public Optional<Member> findByMemberId(Long memberId) {
-        return memberRepository.findByMemberID(memberId);
+    public Optional<Member> getMemberByName(String memberName) {
+        return memberRepository.findMemberByMemberName(memberName);
     }
 
-    public Iterable<Member> findByTournamentId(Long tournamentId) {
-        return memberRepository.findMemberByTournamentId(tournamentId);
+    public Optional<List<Member>> getMemberByMembership(String membershipType) {
+        return memberRepository.findMemberByMembershipType(membershipType);
+    }
+
+    public Optional<Member> getMemberByPhoneNumber(String phoneNumber) {
+        return memberRepository.findMemberByPhoneNumber(phoneNumber);
+    }
+
+    public boolean deleteMember(Long memberId) {
+        if (memberRepository.existsById(memberId)) {
+            memberRepository.deleteById(memberId);
+        } else {
+            throw new RuntimeException("Nothing Was Found With The ID: " + memberId);
+        }
+        return false;
+    }
+
+    public Optional<List<Member>> getMemberByTournamentName(String tournamentName) {
+        return memberRepository.findMemberByTournaments_TournamentName(tournamentName);
+    }
+
+    public Optional<List<Member>> getMemberByTournamentStartDate(String startDate) {
+        return memberRepository.findMemberByTournaments_StartDate(startDate);
     }
 
 }
