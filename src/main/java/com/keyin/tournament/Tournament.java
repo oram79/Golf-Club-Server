@@ -1,5 +1,4 @@
 package com.keyin.tournament;
-
 import com.keyin.member.Member;
 import jakarta.persistence.*;
 
@@ -7,7 +6,6 @@ import java.util.Date;
 import java.util.Set;
 
 @Entity
-@Table(name = "tournaments")
 public class Tournament {
 
     @Id
@@ -20,13 +18,9 @@ public class Tournament {
     private double entryFee;
     private double cashPrize;
 
-    @ManyToMany
-    @JoinTable(
-            name = "tournament_members",
-            joinColumns = @JoinColumn(name = "tournament_id"),
-            inverseJoinColumns = @JoinColumn(name = "member_id")
-    )
-    private Set<Member> members;
+    public Tournament() {
+
+    }
 
     public Long getTournamentId() {
         return tournamentId;
