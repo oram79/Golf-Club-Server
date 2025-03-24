@@ -3,11 +3,18 @@ package com.keyin.member;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
 public interface MemberRepository extends CrudRepository<Member, Long> {
-    Iterable<Member> findMemberByTournamentId(Long tournamentId);
-    Optional<Member> findByMemberID(Long memberId);
-    Optional<Member> findByName(Long name);
+    Optional<Member> findMemberByMemberName(String memberName);
+
+    Optional<List<Member>> findMemberByMembershipType(String membershipType);
+
+    Optional<Member> findMemberByPhoneNumber(String phoneNumber);
+
+    Optional<List<Member>> findMemberByTournaments_StartDate(String startDate);
+
+    Optional<List<Member>> findMemberByTournaments_TournamentName(String tournamentName);
 }
