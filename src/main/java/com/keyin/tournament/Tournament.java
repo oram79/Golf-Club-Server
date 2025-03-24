@@ -1,25 +1,40 @@
 package com.keyin.tournament;
+
 import com.keyin.member.Member;
 import jakarta.persistence.*;
 
-import java.util.Date;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Tournament {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long tournamentId;
 
-    private Date startDate;
-    private Date endDate;
+    private String tournamentName;
+    private String startDate;
+    private String endDate;
     private String location;
-    private double entryFee;
-    private double cashPrize;
+    private String entryFee;
+    private String cashPrizeAmount;
+
+    @ManyToMany
+    private List<Member> members = new ArrayList<>();
 
     public Tournament() {
 
+    }
+
+    public Tournament(Long tournamentId, String tournamentName, String startDate, String endDate, String location, String entryFee, String cashPrizeAmount, List<Member> members) {
+        this.tournamentId = tournamentId;
+        this.tournamentName = tournamentName;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.location = location;
+        this.entryFee = entryFee;
+        this.cashPrizeAmount = cashPrizeAmount;
+        this.members = members;
     }
 
     public Long getTournamentId() {
@@ -30,19 +45,27 @@ public class Tournament {
         this.tournamentId = tournamentId;
     }
 
-    public Date getStartDate() {
+    public String getTournamentName() {
+        return tournamentName;
+    }
+
+    public void setTournamentName(String tournamentName) {
+        this.tournamentName = tournamentName;
+    }
+
+    public String getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
+    public String getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
 
@@ -54,29 +77,27 @@ public class Tournament {
         this.location = location;
     }
 
-    public double getEntryFee() {
+    public String getEntryFee() {
         return entryFee;
     }
 
-    public void setEntryFee(double entryFee) {
+    public void setEntryFee(String entryFee) {
         this.entryFee = entryFee;
     }
 
-    public double getCashPrize() {
-        return cashPrize;
+    public String getCashPrizeAmount() {
+        return cashPrizeAmount;
     }
 
-    public void setCashPrize(double cashPrize) {
-        this.cashPrize = cashPrize;
+    public void setCashPrizeAmount(String cashPrizeAmount) {
+        this.cashPrizeAmount = cashPrizeAmount;
     }
 
-    public String toString() {
-        return
-                ", ID:" + tournamentId +
-                ", Start-Date: " + startDate +
-                ", End-Date: " + endDate +
-                ", Location: " + location +
-                ", Entry-Fee: " + entryFee +
-                ", Cash Prize: " + cashPrize;
+    public List<Member> getMembers() {
+        return members;
+    }
+
+    public void setMembers(List<Member> members) {
+        this.members = members;
     }
 }
