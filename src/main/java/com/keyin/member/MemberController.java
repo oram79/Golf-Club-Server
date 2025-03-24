@@ -20,6 +20,7 @@ public class MemberController {
     @Autowired
     private TournamentService tournamentService;
 
+
     @PostMapping("/addNewMember")
     public Member addNewMember(@RequestBody Member member) {
         List<Tournament> updatedTournamentList = new ArrayList<>();
@@ -40,7 +41,6 @@ public class MemberController {
         member.setTournaments(updatedTournamentList);
         return memberService.addMember(member);
     }
-
 
     @GetMapping("/listAllMembers")
     public ResponseEntity<Iterable<Member>> getAllMembers() {
@@ -83,15 +83,6 @@ public class MemberController {
     @GetMapping("/getMembersByTournamentName/{tournamentName}")
     public ResponseEntity<Optional<List<Member>>> getMemberByTournamentName(@PathVariable String tournamentName) {
         Optional<List<Member>> members = memberService.getMemberByTournamentName(tournamentName);
-        if (members.isEmpty()) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(members);
-    }
-
-    @GetMapping("/getMembersByTournamentStartDate/{startDate}")
-    public ResponseEntity<Optional<List<Member>>> getMemberByTournamentStartDate(@PathVariable String startDate) {
-        Optional<List<Member>> members = memberService.getMemberByTournamentStartDate(startDate);
         if (members.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
