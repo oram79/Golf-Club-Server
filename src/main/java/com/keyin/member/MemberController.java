@@ -1,9 +1,13 @@
 package com.keyin.member;
 
+import com.keyin.tournament.Tournament;
 import com.keyin.tournament.TournamentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -18,24 +22,79 @@ public class MemberController {
 
     @PostMapping("/addNewMember")
     public Member addNewMember(@RequestBody Member member) {
+        List<Tournament> updatedTournamentList = new ArrayList<>();
+
+        for (Tournament tournament : member.getTournaments()) {
+            Optional<Tournament> tournamentOptional = Optional.ofNullable(tournamentService.findByTournamentName(tournament.getTournamentName()));
+
+            if (tournamentOptional.isPresent()) {
+                // If tournament exists, use the existing tournament
+                Tournament existingTournament = tournamentOptional.get();
+                updatedTournamentList.add(existingTournament);
+            } else {
+                // If tournament does not exist, add the new tournament
+                updatedTournamentList.add(tournamentService.addTournament(tournament));
+            }
+        }
+
+        member.setTournaments(updatedTournamentList);
         return memberService.addMember(member);
     }
 
-    @GetMapping("/getAllMembers")
-    public Iterable<Member> getAllMembers() {
-        return memberService.getAllMembers();
+
+    @GetMapping("/listAllMembers")
+    public ResponseEntity<Iterable<Member>> getAllMembers() {
+        memberService.getAllMembers();
+        return ResponseEntity.ok().body(memberService.getAllMembers());
     }
 
-    @GetMapping("/findByName/{Logan Oram}")
-    public ResponseEntity<Member> findByName(@PathVariable Long name) {
-        Optional<Member> member = memberService.findByName(name);
+    @GetMapping("/getMemberById/{memberId}")
+    public ResponseEntity<Member> getMemberById(@PathVariable Long memberId) {
+        Optional<Member> member = memberService.getMemberById(memberId);
         return member.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-
-    @GetMapping("/findByMemberID/{memberID}")
-    public ResponseEntity<Member> findByMemberID(@PathVariable Long memberID) {
-        Optional<Member> member = memberService.findByMemberId(memberID);
+    @GetMapping("/getMemberByName/{memberName}")
+    public ResponseEntity<Member> getMemberByName(@PathVariable String memberName) {
+        Optional<Member> member = memberService.getMemberByName(memberName);
         return member.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/getMemberByMembership/{membershipType}")
+    public ResponseEntity<List<Member>> getMemberByMembership(@PathVariable String membershipType) {
+        Optional<List<Member>> member = memberService.getMemberByMembership(membershipType);
+        return member.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/getMemberPhoneNumber/{phoneNumber}")
+    public ResponseEntity<Member> getMemberByPhoneNumber(@PathVariable String phoneNumber) {
+        Optional<Member> member = memberService.getMemberByPhoneNumber(phoneNumber);
+        return member.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @DeleteMapping("/deleteMemberById/{memberId}")
+    public ResponseEntity<Void> deleteMember(@PathVariable Long memberId) {
+        if (memberService.deleteMember(memberId)) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+    @GetMapping("/getMembersByTournamentName/{tournamentName}")
+    public ResponseEntity<Optional<List<Member>>> getMemberByTournamentName(@PathVariable String tournamentName) {
+        Optional<List<Member>> members = memberService.getMemberByTournamentName(tournamentName);
+        if (members.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(members);
+    }
+
+    @GetMapping("/getMembersByTournamentStartDate/{startDate}")
+    public ResponseEntity<Optional<List<Member>>> getMemberByTournamentStartDate(@PathVariable String startDate) {
+        Optional<List<Member>> members = memberService.getMemberByTournamentStartDate(startDate);
+        if (members.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(members);
     }
 }
