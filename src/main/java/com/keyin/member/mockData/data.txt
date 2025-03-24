@@ -1,0 +1,49 @@
+{
+    "memberName": "Logan Oram",
+    "address": "7071 Rue St. Zotique E",
+    "email": "logansjoram7922@gmail.com",
+    "phoneNumber": "514-743-0667",
+    "membershipType": "Gold",
+    "membershipStartDate": "2025-03-24",
+    "membershipDuration": "12"
+}
+
+{
+    "memberName": "Cole Caufield",
+    "address": "325  Sherbrooke Ouest",
+    "email": "colecaufield13@gmail.com",
+    "phoneNumber": "514-234-9498",
+    "membershipType": "Gold",
+    "membershipStartDate": "2025-03-24",
+    "membershipDuration": "6"
+}
+
+{
+    "memberName": "Nick Suzuki",
+    "address": "4518 rue de la Gauchetière",
+    "email": "nicksuzuki14@gmail.com",
+    "phoneNumber": "514-438-3328",
+    "membershipType": "Silver",
+    "membershipStartDate": "2025-03-24",
+    "membershipDuration": "12"
+}
+
+{
+    "memberName": "Lane Hutson",
+    "address": "1313 Ste. Catherine Ouest",
+    "email": "lanehutson48@gmail.com",
+    "phoneNumber": "514-763-2176",
+    "membershipType": "Bronze",
+    "membershipStartDate": "2025-03-24",
+    "membershipDuration": "6"
+}
+
+{
+    "memberName": "Samuel Montembeault",
+    "address": "2838  Papineau Avenue",
+    "email": "sammontembeault35@gmail.com",
+    "phoneNumber": "514-789-4322",
+    "membershipType": "Silver",
+    "membershipStartDate": "2025-03-24",
+    "membershipDuration": "12"
+}

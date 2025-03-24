@@ -1,0 +1,44 @@
+{
+   "tournamentName": "Spring Swing Open",
+   "startDate": "2025-04-01",
+   "endDate": "2025-04-03",
+   "location": "Toronto Golf Club",
+   "entryFee": "100",
+   "cashPrizeAmount": "1000"
+}
+
+{
+   "tournamentName": "East Coast Classic",
+   "startDate": "2025-05-10",
+   "endDate": "2025-05-12",
+   "location": "St. John's Country Club",
+   "entryFee": "120",
+   "cashPrizeAmount": "1500"
+}
+
+{
+   "tournamentName": "Prairie Cup",
+   "startDate": "2025-06-15",
+   "endDate": "2025-06-17",
+   "location": "Regina National Course",
+   "entryFee": "90",
+   "cashPrizeAmount": "950"
+}
+
+{
+   "tournamentName": "Western Championship",
+   "startDate": "2025-07-05",
+   "endDate": "2025-07-07",
+   "location": "Vancouver Hills Golf Resort",
+   "entryFee": "150",
+   "cashPrizeAmount": "2000"
+}
+
+{
+   "tournamentName": "Fall Finale",
+   "startDate": "2025-09-20",
+   "endDate": "2025-09-22",
+   "location": "Ottawa Lakes Golf Club",
+   "entryFee": "110",
+   "cashPrizeAmount": "1300"
+}
