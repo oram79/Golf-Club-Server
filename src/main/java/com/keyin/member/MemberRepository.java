@@ -5,9 +5,10 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
-public interface MemberRepository extends JpaRepository<Member, Long> {
-    List<Member> findByMemberName(String name);
-    List<Member> findByPhoneNumber(String phoneNumber);
+public interface MemberRepository extends CrudRepository<Member, Long> {
+    Iterable<Member> findMemberByTournamentId(Long tournamentId);
+    Optional<Member> findByMemberID(Long memberId);
 }

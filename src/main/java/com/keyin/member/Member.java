@@ -1,13 +1,13 @@
 package com.keyin.member;
 
 import com.keyin.tournament.Tournament;
+import com.keyin.tournament.TournamentService;
 import jakarta.persistence.*;
 
 import java.util.Date;
 import java.util.Set;
 
 @Entity
-@Table(name = "members")
 public class Member {
 
     @Id
@@ -21,8 +21,12 @@ public class Member {
     private Date memberSin;
     private int duration;
 
-    @ManyToMany(mappedBy = "members")
-    private Set<Tournament> tournaments;
+    @ManyToOne(cascade = CascadeType.MERGE)
+    private Tournament TournamentId;
+
+    public Member() {
+
+    }
 
     public Long getMemberId() {
         return memberId;
