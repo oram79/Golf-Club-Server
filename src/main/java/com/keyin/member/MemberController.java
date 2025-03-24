@@ -1,6 +1,5 @@
 package com.keyin.member;
 
-import com.keyin.tournament.TournamentRepository;
 import com.keyin.tournament.TournamentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,15 +16,22 @@ public class MemberController {
     @Autowired
     private TournamentService tournamentService;
 
+    @PostMapping("/addNewMember")
+    public Member addNewMember(@RequestBody Member member) {
+        return memberService.addMember(member);
+    }
+
     @GetMapping("/getAllMembers")
     public Iterable<Member> getAllMembers() {
         return memberService.getAllMembers();
     }
 
-    @PostMapping("/addNewMember")
-    public Member addNewMember(@RequestBody Member member) {
-        return memberService.addMember(member);
+    @GetMapping("/findByName/{Logan Oram}")
+    public ResponseEntity<Member> findByName(@PathVariable Long name) {
+        Optional<Member> member = memberService.findByName(name);
+        return member.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
+
 
     @GetMapping("/findByMemberID/{memberID}")
     public ResponseEntity<Member> findByMemberID(@PathVariable Long memberID) {

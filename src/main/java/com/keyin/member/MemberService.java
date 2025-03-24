@@ -19,6 +19,10 @@ public class MemberService {
         return memberRepository.findAll();
     }
 
+    public Optional<Member> findByName(Long name) {
+        return memberRepository.findByName(name);
+    }
+
     public Optional<Member> findByMemberId(Long memberId) {
         return memberRepository.findByMemberID(memberId);
     }

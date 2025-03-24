@@ -1,11 +1,9 @@
 package com.keyin.member;
 
 import com.keyin.tournament.Tournament;
-import com.keyin.tournament.TournamentService;
 import jakarta.persistence.*;
 
 import java.util.Date;
-import java.util.Set;
 
 @Entity
 public class Member {
