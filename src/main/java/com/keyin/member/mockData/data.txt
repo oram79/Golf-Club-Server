@@ -85,7 +85,7 @@
     "emailAddress": "lhutson@habsmail.com",
     "phoneNumber": "5145556677",
     "membershipStartDate": "2025-03-15",
-    "membershipDuration": 3 months"
+    "membershipDuration": "3 months"
 }
 
 {
