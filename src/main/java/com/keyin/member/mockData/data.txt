@@ -1,3 +1,6 @@
+/// 10 Records Of JSON Data For API Requests //
+// Members Playing In Tournaments //
+
 {
   "name": "Logan Oram",
   "membershipType": "Gold",
