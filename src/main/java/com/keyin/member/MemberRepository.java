@@ -3,18 +3,13 @@ package com.keyin.member;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-import java.util.Optional;
-
 @Repository
 public interface MemberRepository extends CrudRepository<Member, Long> {
-    Optional<Member> findMemberByMemberName(String memberName);
+    public Member findByName(String name);
 
-    Optional<List<Member>> findMemberByMembershipType(String membershipType);
+    public Member findByMembershipType(String membershipType);
 
-    Optional<Member> findMemberByPhoneNumber(String phoneNumber);
+    public Member findByPhoneNumber(String phoneNumber);
 
-    Optional<List<Member>> findMemberByTournaments_StartDate(String startDate);
-
-    Optional<List<Member>> findMemberByTournaments_TournamentName(String tournamentName);
+    public Member findMemberByMembershipStartDate(String membershipStartDate);
 }

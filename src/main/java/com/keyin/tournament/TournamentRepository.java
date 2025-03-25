@@ -3,16 +3,12 @@ package com.keyin.tournament;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
+import java.util.Calendar;
+import java.util.List;
 
 @Repository
-public interface TournamentRepository extends CrudRepository<Tournament, Long>  {
+public interface TournamentRepository extends CrudRepository<Tournament, Long> {
+    public Tournament findByStartDate(String startDate);
 
-    public Tournament findByTournamentName(String tournamentName);
-
-    Optional<Tournament> findByTournamentId(Long tournamentId);
-
-    Optional<Tournament> findByStartDate(String startDate);
-
-    Optional<Tournament> findByLocation(String location);
+    public Tournament findByLocation(String location);
 }
