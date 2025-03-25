@@ -1,6 +1,5 @@
 package com.keyin.member;
 
-import com.keyin.tournament.TournamentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,52 +8,36 @@ import java.util.Optional;
 
 @Service
 public class MemberService {
-
     @Autowired
     private MemberRepository memberRepository;
 
-    @Autowired
-    private TournamentRepository tournamentRepository;
-
-    public Member addMember(Member member) {
-        return memberRepository.save(member);
+    public Member createMember(Member newMember) {
+        return memberRepository.save(newMember);
     }
 
-    public Iterable<Member> getAllMembers() {
-        return memberRepository.findAll();
+    public Member getMemberByName(String name) {
+        return memberRepository.findByName(name);
     }
 
-    public Optional<Member> getMemberById(Long memberId) {
-        return memberRepository.findById(memberId);
+    public Member getMemberByMembershipType(String membershipType) {
+        return memberRepository.findByMembershipType(membershipType);
     }
 
-    public Optional<Member> getMemberByName(String memberName) {
-        return memberRepository.findMemberByMemberName(memberName);
+    public Member getMemberByPhoneNumber(String phoneNumber) {
+        return memberRepository.findByPhoneNumber(phoneNumber);
     }
 
-    public Optional<List<Member>> getMemberByMembership(String membershipType) {
-        return memberRepository.findMemberByMembershipType(membershipType);
+    public Member getMemberByMembershipStartDate(String membershipStartDate) {
+        return memberRepository.findMemberByMembershipStartDate(membershipStartDate);
     }
 
-    public Optional<Member> getMemberByPhoneNumber(String phoneNumber) {
-        return memberRepository.findMemberByPhoneNumber(phoneNumber);
+    public Member getMemberById(long id) {
+        Optional<Member> memberOptional = memberRepository.findById(id);
+
+        return memberOptional.orElse(null);
     }
 
-    public boolean deleteMember(Long memberId) {
-        if (memberRepository.existsById(memberId)) {
-            memberRepository.deleteById(memberId);
-        } else {
-            throw new RuntimeException("Nothing Was Found With The ID: " + memberId);
-        }
-        return false;
+    public List<Member> getAllMembers() {
+        return (List<Member>) memberRepository.findAll();
     }
-
-    public Optional<List<Member>> getMemberByTournamentName(String tournamentName) {
-        return memberRepository.findMemberByTournaments_TournamentName(tournamentName);
-    }
-
-    public Optional<List<Member>> getMemberByTournamentStartDate(String startDate) {
-        return memberRepository.findMemberByTournaments_StartDate(startDate);
-    }
-
 }
