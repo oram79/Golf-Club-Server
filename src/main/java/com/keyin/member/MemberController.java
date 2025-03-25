@@ -1,6 +1,6 @@
 package com.keyin.member;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Autowired;import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,12 +16,12 @@ public class MemberController {
         return memberService.createMember(member);
     }
 
-    @GetMapping("/getMemberByName")
-    public Member getMemberByName(@RequestParam("name") String name) {
-        return memberService.getMemberByName(name);
+    @GetMapping("/getMemberByName?name={memberName}")
+    public ResponseEntity<Member> getMemberByName(@RequestParam String name) {
+        return ResponseEntity.ok(memberService.getMemberByName(name));
     }
 
-    @GetMapping("/getMemberByMembershipType")
+    @GetMapping("/getMemberByMembershipType?membershipType={membershipType}")
     public Member getMemberByMembershipType(@RequestParam("membershipType") String membershipType) {
         return memberService.getMemberByMembershipType(membershipType);
     }
