@@ -5,8 +5,7 @@ import jakarta.persistence.*;
 @Entity
 public class Member {
     @Id
-    @SequenceGenerator(name = "member_sequence", sequenceName = "member_sequence", allocationSize = 1, initialValue=1)
-    @GeneratedValue(generator = "member_sequence")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long memberId;
 
     private String name;
