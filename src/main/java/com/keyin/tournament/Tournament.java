@@ -10,8 +10,9 @@ public class Tournament {
     @Id
     @SequenceGenerator(name = "tournament_sequence", sequenceName = "tournament_sequence", allocationSize = 1, initialValue=1)
     @GeneratedValue(generator = "tournament_sequence")
-    private long id;
+    private long tournamentId;
 
+    private String tournamentName;
     private String startDate;
     private String endDate;
     private String location;
@@ -24,8 +25,8 @@ public class Tournament {
     public Tournament() {
     }
 
-    public Tournament(long id, String startDate, String endDate, String location, String entryFee, String cashPrizeAmount, List<Member> participatingMembers) {
-        this.id = id;
+    public Tournament(long tournamentId, String tournamentName, String startDate, String endDate, String location, String entryFee, String cashPrizeAmount, List<Member> participatingMembers) {
+        this.tournamentId = tournamentId;
         this.startDate = startDate;
         this.endDate = endDate;
         this.location = location;
@@ -35,11 +36,19 @@ public class Tournament {
     }
 
     public long getId() {
-        return id;
+        return tournamentId;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setId(long tournamentId) {
+        this.tournamentId = tournamentId;
+    }
+
+    public String getTournamentName() {
+        return tournamentName;
+    }
+
+    public void setTournamentName(String tournamentName) {
+        this.tournamentName = tournamentName;
     }
 
     public String getStartDate() {

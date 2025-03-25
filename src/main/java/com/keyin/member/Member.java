@@ -7,7 +7,7 @@ public class Member {
     @Id
     @SequenceGenerator(name = "member_sequence", sequenceName = "member_sequence", allocationSize = 1, initialValue=1)
     @GeneratedValue(generator = "member_sequence")
-    private long id;
+    private long memberId;
 
     private String name;
     private String membershipType;
@@ -20,8 +20,8 @@ public class Member {
     public Member() {
     }
 
-    public Member(long id, String name, String membershipType, String address, String emailAddress, String phoneNumber, String membershipStartDate, String membershipDuration) {
-        this.id = id;
+    public Member(long memberId, String name, String membershipType, String address, String emailAddress, String phoneNumber, String membershipStartDate, String membershipDuration) {
+        this.memberId = memberId;
         this.name = name;
         this.membershipType = membershipType;
         this.address = address;
@@ -32,11 +32,11 @@ public class Member {
     }
 
     public long getId() {
-        return id;
+        return memberId;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setId(long memberId) {
+        this.memberId = memberId;
     }
 
     public String getName() {
