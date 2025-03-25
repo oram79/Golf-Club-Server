@@ -1,53 +1,65 @@
 package com.keyin.tournament;
 
+import com.keyin.member.Member;
+import com.keyin.member.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
+import java.util.List;
 
 @RestController
 @CrossOrigin
 public class TournamentController {
-
     @Autowired
     private TournamentService tournamentService;
 
-    @PostMapping("/addNewTournament")
-    public Tournament addNewTournament(@RequestBody Tournament tournament) {
+    @Autowired
+    private MemberService memberService;
 
-        return tournamentService.addTournament(tournament);
+    @PostMapping("/createTournament")
+    public Tournament createTournament(@RequestBody Tournament tournament) {
+        return tournamentService.createTournament(tournament);
     }
 
-    @GetMapping("/listAllTournaments")
-    public ResponseEntity<Iterable<Tournament>> getAllTournaments() {
-        tournamentService.getAllTournaments();
-        return ResponseEntity.ok().body(tournamentService.getAllTournaments());
-    }
+    @PostMapping("/{tournamentId}/add-member/{memberId}")
+    public ResponseEntity<String> addMemberToTournament(@PathVariable long tournamentId, @PathVariable long memberId) {
+        Tournament tournament = tournamentService.getTournamentById(tournamentId);
+        Member member = memberService.getMemberById(memberId);
 
-    @GetMapping("/getTournamentById/{tournamentId}")
-    public ResponseEntity<Tournament> getTournamentById(@PathVariable Long tournamentId) {
-        Optional<Tournament> tournament = tournamentService.getTournamentById(tournamentId);
-        return tournament.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
-    }
-
-    @GetMapping("/getTournamentByStartDate/{startDate}")
-    public ResponseEntity<Tournament> getTournamentByStartDate(@PathVariable String startDate) {
-        Optional<Tournament> tournament = tournamentService.getTournamentByStartDate(startDate);
-        return tournament.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
-    }
-
-    @GetMapping("/getTournamentByLocation/{location}")
-    public ResponseEntity<Tournament> getTournamentByLocation(@PathVariable String location) {
-        Optional<Tournament> tournament = tournamentService.getTournamentByLocation(location);
-        return tournament.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
-    }
-
-    @DeleteMapping("/deleteTournamentById/{tournamentId}")
-    public ResponseEntity<Void> deleteTournament(@PathVariable Long tournamentId) {
-        if (tournamentService.deleteTournament(tournamentId)) {
-            return ResponseEntity.noContent().build();
+        if (tournament == null || member == null) {
+            return new ResponseEntity<>("Member or tournament not found", HttpStatus.NOT_FOUND);
         }
-        return ResponseEntity.notFound().build();
+
+        if (tournament.getParticipatingMembers().contains(member)) {
+            return new ResponseEntity<>("Member already exists in participating members list", HttpStatus.CONFLICT);
+        }
+
+        tournament.getParticipatingMembers().add(member);
+        tournamentService.createTournament(tournament);
+
+        return new ResponseEntity<>("Added member to participating members list", HttpStatus.CREATED);
+    }
+
+    @GetMapping("/getTournamentByStartDate")
+    public Tournament getTournamentByStartDate(@RequestParam("startDate") String startDate) {
+        return tournamentService.getTournamentByStartDate(startDate);
+    }
+
+    @GetMapping("/getTournamentByLocation")
+    public Tournament getTournamentByLocation(@RequestParam("location") String location) {
+        return tournamentService.getTournamentByLocation(location);
+    }
+
+
+    @GetMapping("/getAllMembersInATournamentByTournamentId/{tournamentId}")
+    public Iterable<Member> getAllMembersInATournamentByTournamentId(@PathVariable long tournamentId){
+        return tournamentService.getAllMembersInATournamentByTournamentId(tournamentId);
+    }
+
+    @GetMapping("/getAllTournaments")
+    public List<Tournament> getAllTournaments() {
+        return tournamentService.getAllTournaments();
     }
 }
