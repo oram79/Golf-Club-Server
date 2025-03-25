@@ -47,7 +47,6 @@ public class TournamentController {
         return tournamentService.getTournamentByStartDate(startDate);
     }
 
-
     @GetMapping("/getTournamentByLocation?location={location}")
     public Tournament getTournamentByLocation(@RequestParam String location) {
         return tournamentService.getTournamentByLocation(location);

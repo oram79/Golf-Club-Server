@@ -22,16 +22,16 @@ public class MemberController {
     }
 
     @GetMapping("/getMemberByMembershipType?membershipType={membershipType}")
-    public Member getMemberByMembershipType(@RequestParam("membershipType") String membershipType) {
-        return memberService.getMemberByMembershipType(membershipType);
+    public ResponseEntity<List<Member>> getMemberByMembershipType(@RequestParam String membershipType) {
+        return ResponseEntity.ok(memberService.getMembersByMembershipType(membershipType));
     }
 
-    @GetMapping("/getMemberByPhoneNumber")
+    @GetMapping("/getMemberByPhoneNumber?phoneNumber={phoneNumber}")
     public Member getMemberByPhoneNumber(@RequestParam("phoneNumber") String phoneNumber) {
         return memberService.getMemberByPhoneNumber(phoneNumber);
     }
 
-    @GetMapping("/getMemberByMembershipStartDate")
+    @GetMapping("/getMemberByMembershipStartDate?MembershipStartDate={MembershipStartDate}")
     public Member getMemberByMembershipStartDate(@RequestParam("membershipStartDate") String membershipStartDate) {
         return memberService.getMemberByMembershipStartDate(membershipStartDate);
 

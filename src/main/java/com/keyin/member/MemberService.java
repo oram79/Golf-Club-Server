@@ -19,7 +19,7 @@ public class MemberService {
         return memberRepository.findByName(name);
     }
 
-    public Member getMemberByMembershipType(String membershipType) {
+    public List<Member> getMembersByMembershipType(String membershipType) {
         return memberRepository.findByMembershipType(membershipType);
     }
 
