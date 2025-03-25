@@ -1,49 +1,99 @@
 {
-  "name": "John Doe",
+  "name": "Logan Oram",
   "membershipType": "Gold",
-  "address": "123 Golf Lane",
-  "emailAddress": "johndoe@example.com",
-  "phoneNumber": "7091234567",
-  "membershipStartDate": "2025-03-01",
+  "address": "7071 Rue St Zotique E",
+  "emailAddress": "logansjoram7922@gmail.com",
+  "phoneNumber": "5147430667",
+  "membershipStartDate": "2025-03-25",
   "membershipDuration": "12 months"
 }
 
 {
-    "memberName": "Cole Caufield",
-    "address": "325  Sherbrooke Ouest",
-    "email": "colecaufield13@gmail.com",
-    "phoneNumber": "514-234-9498",
+    "name": "Cole Caufield",
     "membershipType": "Gold",
-    "membershipStartDate": "2025-03-24",
-    "membershipDuration": "6"
+    "address": "1538 Rue Sherbrooke Ouest",
+    "emailAddress": "ccaufield@habsmail.com",
+    "phoneNumber": "5145555678",
+    "membershipStartDate": "2025-02-15",
+    "membershipDuration": "6 months"
 }
 
 {
-    "memberName": "Nick Suzuki",
-    "address": "4518 rue de la Gauchetière",
-    "email": "nicksuzuki14@gmail.com",
-    "phoneNumber": "514-438-3328",
+    "name": "Nick Suzuki",
     "membershipType": "Silver",
-    "membershipStartDate": "2025-03-24",
-    "membershipDuration": "12"
+    "address": "5100 Maisonneuve Blvd",
+    "emailAddress": "nsuzuki@habsmail.com",
+    "phoneNumber": "5145551234",
+    "membershipStartDate": "2025-03-01",
+    "membershipDuration": "3 months"
 }
 
 {
-    "memberName": "Lane Hutson",
-    "address": "1313 Ste. Catherine Ouest",
-    "email": "lanehutson48@gmail.com",
-    "phoneNumber": "514-763-2176",
+    "name": "Juraj Slafkovsky",
+    "membershipType": "Gold",
+    "address": "300 Rue Léo Pariseau",
+    "emailAddress": "jslafkovsky@habsmail.com",
+    "phoneNumber": "5145558765",
+    "membershipStartDate": "2025-01-10",
+    "membershipDuration": "12 months"
+}
+
+{
+    "name": "David Savard",
     "membershipType": "Bronze",
-    "membershipStartDate": "2025-03-24",
-    "membershipDuration": "6"
+    "address": "6070 Côte Saint Luc Rd",
+    "emailAddress": "dsavard@habsmail.com",
+    "phoneNumber": "5145554321",
+    "membershipStartDate": "2025-03-10",
+    "membershipDuration": "3 months"
 }
 
 {
-    "memberName": "Samuel Montembeault",
-    "address": "2838  Papineau Avenue",
-    "email": "sammontembeault35@gmail.com",
-    "phoneNumber": "514-789-4322",
+    "name": "Kirby Dach",
     "membershipType": "Silver",
-    "membershipStartDate": "2025-03-24",
-    "membershipDuration": "12"
+    "address": "4801 St Laurent Blvd",
+    "emailAddress": "kdach@habsmail.com",
+    "phoneNumber": "5145557788",
+    "membershipStartDate": "2025-03-20",
+    "membershipDuration": "6 months"
+}
+
+{
+    "name": "Samuel Montembeault",
+    "membershipType": "Gold",
+    "address": "1862 Boul. de Maisonneuve",
+    "emailAddress": "smontembeault@habsmail.com",
+    "phoneNumber": "5145556677",
+    "membershipStartDate": "2025-03-15",
+    "membershipDuration": "12 months"
+}
+
+{
+    "name": "Jakub Dobeš",
+    "membershipType": "Gold",
+    "address": "2077 Blvd Robert-Bourassa",
+    "emailAddress": "jdobes@habsmail.com",
+    "phoneNumber": "5145556677",
+    "membershipStartDate": "2025-03-15",
+    "membershipDuration": "6 months"
+}
+
+{
+    "name": "Lane Hutson",
+    "membershipType": "Gold",
+    "address": "234 Av. Laurier O",
+    "emailAddress": "lhutson@habsmail.com",
+    "phoneNumber": "5145556677",
+    "membershipStartDate": "2025-03-15",
+    "membershipDuration": 3 months"
+}
+
+{
+    "name": "Carey Price",
+    "membershipType": "Gold",
+    "address": "900 René-Lévesque Blvd",
+    "emailAddress": "cp31@habsmail.com",
+    "phoneNumber": "5145556677",
+    "membershipStartDate": "2025-03-15",
+    "membershipDuration": "6 months"
 }

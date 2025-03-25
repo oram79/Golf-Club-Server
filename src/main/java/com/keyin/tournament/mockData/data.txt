@@ -1,45 +1,99 @@
 {
-  "tournamentName": "Spring Invitational",
-  "startDate": "2025-04-10",
-  "endDate": "2025-04-12",
-  "location": "St. John's Golf Club",
-  "entryFee": "50",
-  "cashPrizeAmount": "500",
-  "participatingMembers": []
+    "tournamentName": "RBC Canadian Open",
+    "startDate": "2025-06-05",
+    "endDate": "2025-06-08",
+    "location": "Hamilton Golf & Country Club, Ontario",
+    "entryFee": "150",
+    "cashPrizeAmount": "1000000",
+    "participatingMembers": []
 }
 
 {
-   "tournamentName": "East Coast Classic",
-   "startDate": "2025-05-10",
-   "endDate": "2025-05-12",
-   "location": "St. John's Country Club",
-   "entryFee": "120",
-   "cashPrizeAmount": "1500"
+    "tournamentName": "ATB Classic",
+    "startDate": "2025-06-19",
+    "endDate": "2025-06-22",
+    "location": "Edmonton Petroleum Golf & Country Club, Alberta",
+    "entryFee": "100",
+    "cashPrizeAmount": "200000",
+    "participatingMembers": []
 }
 
 {
-   "tournamentName": "Prairie Cup",
-   "startDate": "2025-06-15",
-   "endDate": "2025-06-17",
-   "location": "Regina National Course",
-   "entryFee": "90",
-   "cashPrizeAmount": "950"
+    "tournamentName": "Elk Ridge Saskatchewan Open",
+    "startDate": "2025-07-03",
+    "endDate": "2025-07-06",
+    "location": "Elk Ridge Resort, Saskatchewan",
+    "entryFee": "90",
+    "cashPrizeAmount": "175000",
+    "participatingMembers": []
 }
 
 {
-   "tournamentName": "Western Championship",
-   "startDate": "2025-07-05",
-   "endDate": "2025-07-07",
-   "location": "Vancouver Hills Golf Resort",
-   "entryFee": "150",
-   "cashPrizeAmount": "2000"
+    "tournamentName": "Quebec Open",
+    "startDate": "2025-07-17",
+    "endDate": "2025-07-20",
+    "location": "Golf Château-Bromont, Quebec",
+    "entryFee": "85",
+    "cashPrizeAmount": "150000",
+    "participatingMembers": []
 }
 
 {
-   "tournamentName": "Fall Finale",
-   "startDate": "2025-09-20",
-   "endDate": "2025-09-22",
-   "location": "Ottawa Lakes Golf Club",
-   "entryFee": "110",
-   "cashPrizeAmount": "1300"
+    "tournamentName": "Royal Beach Victoria Open",
+    "startDate": "2025-05-29",
+    "endDate": "2025-06-01",
+    "location": "Uplands Golf Club, British Columbia",
+    "entryFee": "100",
+    "cashPrizeAmount": "200000",
+    "participatingMembers": []
+}
+
+{
+    "tournamentName": "Commissionaires Ottawa Open",
+    "startDate": "2025-07-24",
+    "endDate": "2025-07-27",
+    "location": "Eagle Creek Golf Club, Ontario",
+    "entryFee": "90",
+    "cashPrizeAmount": "180000",
+    "participatingMembers": []
+}
+
+{
+    "tournamentName": "Manitoba Open",
+    "startDate": "2025-08-01",
+    "endDate": "2025-08-04",
+    "location": "Southwood Golf & Country Club, Manitoba",
+    "entryFee": "95",
+    "cashPrizeAmount": "160000",
+    "participatingMembers": []
+}
+
+{
+    "tournamentName": "CRMC Championship",
+    "startDate": "2025-08-14",
+    "endDate": "2025-08-17",
+    "location": "Whitewater Golf Club, Thunder Bay, Ontario",
+    "entryFee": "110",
+    "cashPrizeAmount": "190000",
+    "participatingMembers": []
+}
+
+{
+    "tournamentName": "Prince Edward Island Open",
+    "startDate": "2025-08-21",
+    "endDate": "2025-08-24",
+    "location": "Dundarave Golf Course, PEI",
+    "entryFee": "80",
+    "cashPrizeAmount": "140000",
+    "participatingMembers": []
+}
+
+{
+    "tournamentName": "Fortinet Cup Championship",
+    "startDate": "2025-09-04",
+    "endDate": "2025-09-07",
+    "location": "Country Hills Golf Club, Calgary, Alberta",
+    "entryFee": "120",
+    "cashPrizeAmount": "250000",
+    "participatingMembers": []
 }
