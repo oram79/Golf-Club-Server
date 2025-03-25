@@ -3,16 +3,15 @@ package com.keyin.tournament;
 import com.keyin.member.Member;
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class Tournament {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long tournamentId;
+    @SequenceGenerator(name = "tournament_sequence", sequenceName = "tournament_sequence", allocationSize = 1, initialValue=1)
+    @GeneratedValue(generator = "tournament_sequence")
+    private long id;
 
-    private String tournamentName;
     private String startDate;
     private String endDate;
     private String location;
@@ -20,37 +19,27 @@ public class Tournament {
     private String cashPrizeAmount;
 
     @ManyToMany
-    private List<Member> members = new ArrayList<>();
+    private List<Member> participatingMembers;
 
     public Tournament() {
-
     }
 
-    public Tournament(Long tournamentId, String tournamentName, String startDate, String endDate, String location, String entryFee, String cashPrizeAmount, List<Member> members) {
-        this.tournamentId = tournamentId;
-        this.tournamentName = tournamentName;
+    public Tournament(long id, String startDate, String endDate, String location, String entryFee, String cashPrizeAmount, List<Member> participatingMembers) {
+        this.id = id;
         this.startDate = startDate;
         this.endDate = endDate;
         this.location = location;
         this.entryFee = entryFee;
         this.cashPrizeAmount = cashPrizeAmount;
-        this.members = members;
+        this.participatingMembers = participatingMembers;
     }
 
-    public Long getTournamentId() {
-        return tournamentId;
+    public long getId() {
+        return id;
     }
 
-    public void setTournamentId(Long tournamentId) {
-        this.tournamentId = tournamentId;
-    }
-
-    public String getTournamentName() {
-        return tournamentName;
-    }
-
-    public void setTournamentName(String tournamentName) {
-        this.tournamentName = tournamentName;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getStartDate() {
@@ -93,11 +82,11 @@ public class Tournament {
         this.cashPrizeAmount = cashPrizeAmount;
     }
 
-    public List<Member> getMembers() {
-        return members;
+    public List<Member> getParticipatingMembers() {
+        return participatingMembers;
     }
 
-    public void setMembers(List<Member> members) {
-        this.members = members;
+    public void setParticipatingMembers(List<Member> participatingMembers) {
+        this.participatingMembers = participatingMembers;
     }
 }

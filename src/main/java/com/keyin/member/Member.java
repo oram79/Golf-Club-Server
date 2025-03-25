@@ -1,59 +1,58 @@
 package com.keyin.member;
 
-import com.keyin.tournament.Tournament;
 import jakarta.persistence.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 public class Member {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long memberId;
+    @SequenceGenerator(name = "member_sequence", sequenceName = "member_sequence", allocationSize = 1, initialValue=1)
+    @GeneratedValue(generator = "member_sequence")
+    private long id;
 
-    private String memberName;
-    private String address;
-    private String email;
-    private String phoneNumber;
+    private String name;
     private String membershipType;
+    private String address;
+    private String emailAddress;
+    private String phoneNumber;
     private String membershipStartDate;
     private String membershipDuration;
 
-    @ManyToMany
-    private List<Tournament> tournaments = new ArrayList<>();
-
-
-    public Member () {
-
+    public Member() {
     }
 
-    public Member(Long memberId, String memberName, String address, String email, String phoneNumber, String membershipType, String membershipStartDate, String membershipDuration, List <Tournament> tournaments) {
-        this.memberId = memberId;
-        this.memberName = memberName;
-        this.address = address;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
+    public Member(long id, String name, String membershipType, String address, String emailAddress, String phoneNumber, String membershipStartDate, String membershipDuration) {
+        this.id = id;
+        this.name = name;
         this.membershipType = membershipType;
+        this.address = address;
+        this.emailAddress = emailAddress;
+        this.phoneNumber = phoneNumber;
         this.membershipStartDate = membershipStartDate;
         this.membershipDuration = membershipDuration;
-        this.tournaments = tournaments;
     }
 
-    public Long getMemberId() {
-        return memberId;
+    public long getId() {
+        return id;
     }
 
-    public void setMemberId(Long memberId) {
-        this.memberId = memberId;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public String getMemberName() {
-        return memberName;
+    public String getName() {
+        return name;
     }
 
-    public void setMemberName(String memberName) {
-        this.memberName = memberName;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getMembershipType() {
+        return membershipType;
+    }
+
+    public void setMembershipType(String membershipType) {
+        this.membershipType = membershipType;
     }
 
     public String getAddress() {
@@ -64,12 +63,12 @@ public class Member {
         this.address = address;
     }
 
-    public String getEmail() {
-        return email;
+    public String getEmailAddress() {
+        return emailAddress;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
     }
 
     public String getPhoneNumber() {
@@ -78,14 +77,6 @@ public class Member {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    public String getMembershipType() {
-        return membershipType;
-    }
-
-    public void setMembershipType(String membershipType) {
-        this.membershipType = membershipType;
     }
 
     public String getMembershipStartDate() {
@@ -102,13 +93,5 @@ public class Member {
 
     public void setMembershipDuration(String membershipDuration) {
         this.membershipDuration = membershipDuration;
-    }
-
-    public List<Tournament> getTournaments() {
-        return tournaments;
-    }
-
-    public void setTournaments(List<Tournament> tournaments) {
-        this.tournaments = tournaments;
     }
 }
