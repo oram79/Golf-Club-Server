@@ -42,7 +42,7 @@ public class TournamentController {
         return new ResponseEntity<>("Player Added To Tournament!", HttpStatus.CREATED);
     }
 
-    @GetMapping("/getTournamentByStartDate")
+    @GetMapping("/getTournamentByStartDate?startDate={Date}")
     public Tournament getTournamentByStartDate(@RequestParam("startDate") String startDate) {
         return tournamentService.getTournamentByStartDate(startDate);
     }
