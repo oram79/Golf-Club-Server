@@ -23,17 +23,21 @@ public class MemberController {
 
     @PostMapping("/addNewMember")
     public Member addNewMember(@RequestBody Member member) {
+        List<Tournament> tournamentsFromRequest = member.getTournaments();
+        if (tournamentsFromRequest == null) {
+            tournamentsFromRequest = new ArrayList<>();
+        }
+
         List<Tournament> updatedTournamentList = new ArrayList<>();
 
-        for (Tournament tournament : member.getTournaments()) {
-            Optional<Tournament> tournamentOptional = Optional.ofNullable(tournamentService.findByTournamentName(tournament.getTournamentName()));
+        for (Tournament tournament : tournamentsFromRequest) {
+            Optional<Tournament> tournamentOptional = Optional.ofNullable(
+                    tournamentService.findByTournamentName(tournament.getTournamentName())
+            );
 
             if (tournamentOptional.isPresent()) {
-                // If tournament exists, use the existing tournament
-                Tournament existingTournament = tournamentOptional.get();
-                updatedTournamentList.add(existingTournament);
+                updatedTournamentList.add(tournamentOptional.get());
             } else {
-                // If tournament does not exist, add the new tournament
                 updatedTournamentList.add(tournamentService.addTournament(tournament));
             }
         }
@@ -41,6 +45,33 @@ public class MemberController {
         member.setTournaments(updatedTournamentList);
         return memberService.addMember(member);
     }
+
+
+    @PutMapping("/assignTournamentToMember/{memberId}/{tournamentName}")
+    public ResponseEntity<Member> assignTournamentToMember(
+            @PathVariable Long memberId,
+            @PathVariable String tournamentName) {
+
+        Optional<Member> memberOptional = memberService.getMemberById(memberId);
+        Tournament tournament = tournamentService.findByTournamentName(tournamentName);
+
+        if (memberOptional.isEmpty() || tournament == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        Member member = memberOptional.get();
+
+        // Get current tournaments, add new one if not already present
+        List<Tournament> tournaments = member.getTournaments();
+        if (!tournaments.contains(tournament)) {
+            tournaments.add(tournament);
+            member.setTournaments(tournaments);
+            memberService.addMember(member); // Save updated member
+        }
+
+        return ResponseEntity.ok(member);
+    }
+
 
     @GetMapping("/listAllMembers")
     public ResponseEntity<Iterable<Member>> getAllMembers() {

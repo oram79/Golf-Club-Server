@@ -3,6 +3,7 @@ package com.keyin.member;
 import com.keyin.tournament.Tournament;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -20,7 +21,8 @@ public class Member {
     private String membershipDuration;
 
     @ManyToMany
-    private List <Tournament> tournaments;
+    private List<Tournament> tournaments = new ArrayList<>();
+
 
     public Member () {
 
