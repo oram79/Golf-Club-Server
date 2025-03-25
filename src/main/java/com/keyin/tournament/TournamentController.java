@@ -47,11 +47,11 @@ public class TournamentController {
         return tournamentService.getTournamentByStartDate(startDate);
     }
 
-    @GetMapping("/getTournamentByLocation")
-    public Tournament getTournamentByLocation(@RequestParam("location") String location) {
+
+    @GetMapping("/getTournamentByLocation?location={location}")
+    public Tournament getTournamentByLocation(@RequestParam String location) {
         return tournamentService.getTournamentByLocation(location);
     }
-
 
     @GetMapping("/getAllMembersInATournamentByTournamentId/{tournamentId}")
     public Iterable<Member> getAllMembersInATournamentByTournamentId(@PathVariable long tournamentId){
