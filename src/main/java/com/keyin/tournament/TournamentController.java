@@ -33,13 +33,13 @@ public class TournamentController {
         }
 
         if (tournament.getParticipatingMembers().contains(member)) {
-            return new ResponseEntity<>("Member already exists in participating members list", HttpStatus.CONFLICT);
+            return new ResponseEntity<>("Player Is Already In This Tournament", HttpStatus.CONFLICT);
         }
 
         tournament.getParticipatingMembers().add(member);
         tournamentService.createTournament(tournament);
 
-        return new ResponseEntity<>("Added member to participating members list", HttpStatus.CREATED);
+        return new ResponseEntity<>("Player Added To Tournament!", HttpStatus.CREATED);
     }
 
     @GetMapping("/getTournamentByStartDate")

@@ -31,8 +31,8 @@ public class MemberService {
         return memberRepository.findMemberByMembershipStartDate(membershipStartDate);
     }
 
-    public Member getMemberById(long id) {
-        Optional<Member> memberOptional = memberRepository.findById(id);
+    public Member getMemberById(long memberId) {
+        Optional<Member> memberOptional = memberRepository.findById(memberId);
 
         return memberOptional.orElse(null);
     }

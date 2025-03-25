@@ -26,8 +26,8 @@ public class TournamentService {
         return tournamentRepository.findByLocation(location);
     }
 
-    public Tournament getTournamentById(long id) {
-        Optional<Tournament> tournamentOptional = tournamentRepository.findById(id);
+    public Tournament getTournamentById(long tournamentId) {
+        Optional<Tournament> tournamentOptional = tournamentRepository.findById(tournamentId);
 
         return tournamentOptional.orElse(null);
     }
