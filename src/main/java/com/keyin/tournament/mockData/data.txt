@@ -1,10 +1,11 @@
 {
-   "tournamentName": "Spring Swing Open",
-   "startDate": "2025-04-01",
-   "endDate": "2025-04-03",
-   "location": "Toronto Golf Club",
-   "entryFee": "100",
-   "cashPrizeAmount": "1000"
+  "tournamentName": "Spring Invitational",
+  "startDate": "2025-04-10",
+  "endDate": "2025-04-12",
+  "location": "St. John's Golf Club",
+  "entryFee": "50",
+  "cashPrizeAmount": "500",
+  "participatingMembers": []
 }
 
 {

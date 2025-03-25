@@ -1,11 +1,11 @@
 {
-    "memberName": "Logan Oram",
-    "address": "7071 Rue St. Zotique E",
-    "email": "logansjoram7922@gmail.com",
-    "phoneNumber": "514-743-0667",
-    "membershipType": "Gold",
-    "membershipStartDate": "2025-03-24",
-    "membershipDuration": "12"
+  "name": "John Doe",
+  "membershipType": "Gold",
+  "address": "123 Golf Lane",
+  "emailAddress": "johndoe@example.com",
+  "phoneNumber": "7091234567",
+  "membershipStartDate": "2025-03-01",
+  "membershipDuration": "12 months"
 }
 
 {
